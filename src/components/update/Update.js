@@ -14,13 +14,14 @@ function Update() {
 
   const url = "https://63e4a1368e1ed4ccf6e29538.mockapi.io/Crud";
   const sendDataToApi = () => {
-    axios.put(`${url}/${ID}`, {
-      firstName,
-      lastName,
-    })
-    .then(()=>{
-        navigate("/read")
-    })
+    axios
+      .put(`${url}/${ID}`, {
+        firstName,
+        lastName,
+      })
+      .then(() => {
+        navigate("/read");
+      });
   };
 
   //to get data from the Local Storage

@@ -9,12 +9,12 @@ function Read() {
   const navigate = useNavigate();
   const url = "https://63e4a1368e1ed4ccf6e29538.mockapi.io/Crud";
   const [apiData, setApiData] = useState([]);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
-  const handleSubmit =(e) =>{
-     e.preventDefault();
-  }
- 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   const setData = (id, firstName, lastName) => {
     localStorage.setItem("ID", id);
     localStorage.setItem("firstName", firstName);
@@ -52,7 +52,7 @@ function Read() {
         placeholder="Search..."
         name="search"
         value={search}
-        onChange={(e)=>setSearch(e.target.value)}
+        onChange={(e) => setSearch(e.target.value)}
       />
       <Table celled>
         <Table.Header>
@@ -66,44 +66,42 @@ function Read() {
         </Table.Header>
 
         <Table.Body>
-          {
-           apiData.filter((val)=>{
-                if(search === ""){
-                    return val;
-                }else if(val.firstName.toLowerCase().includes(search)){
-                    return val;
-                }
-              })
-           .map((val) => {
-            return (
-              <Table.Row>
-                <Table.Cell>{val.id}</Table.Cell>
-                <Table.Cell>{val.firstName}</Table.Cell>
-                <Table.Cell>{val.lastName}</Table.Cell>
-                <Table.Cell>
-                  <Link to="/update">
-                    <Button
-                      color="green"
-                      onClick={() =>
-                        setData(val.id, val.firstName, val.lastName)
-                      }
-                    >
-                      Update
-                    </Button>
-                  </Link>
-                </Table.Cell>
-                <Table.Cell>
-                  <Link to="/delete">
-                    <Button color="red" onClick={() => onDelete(val.id)}>
-                      Delete
-                    </Button>
-                  </Link>
-                </Table.Cell>
-              </Table.Row>
-            )
-          })
-          
-          }
+          {apiData
+            .filter((val) => {
+              if (search === "") {
+                return val;
+              } else if (val.firstName.toLowerCase().includes(search)) {
+                return val;
+              }
+            })
+            .map((val) => {
+              return (
+                <Table.Row>
+                  <Table.Cell>{val.id}</Table.Cell>
+                  <Table.Cell>{val.firstName}</Table.Cell>
+                  <Table.Cell>{val.lastName}</Table.Cell>
+                  <Table.Cell>
+                    <Link to="/update">
+                      <Button
+                        color="green"
+                        onClick={() =>
+                          setData(val.id, val.firstName, val.lastName)
+                        }
+                      >
+                        Update
+                      </Button>
+                    </Link>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Link to="/delete">
+                      <Button color="red" onClick={() => onDelete(val.id)}>
+                        Delete
+                      </Button>
+                    </Link>
+                  </Table.Cell>
+                </Table.Row>
+              );
+            })}
         </Table.Body>
       </Table>
       <div style={{ marginTop: 10 }}>
