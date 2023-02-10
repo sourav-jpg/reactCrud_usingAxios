@@ -52,7 +52,7 @@ function Update() {
             onChange={(e) => setLastName(e.target.value)}
           />
         </Form.Field>
-        <Button type="submit" onClick={sendDataToApi}>
+        <Button color="blue" type="submit" onClick={sendDataToApi}>
           Update
         </Button>
       </Form>
